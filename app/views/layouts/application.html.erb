@@ -10,39 +10,86 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="container-fluid">
-    <header class="text-light bg-dark mb-3">
+  <body>
+    <header class="text-light bg-dark mb-3 no-gutters">
       <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
         
-        <a class="navbar-brand" href="/">Bookers</a>
+          <a class="navbar-brand" href="/">Bookers</a>
         
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" 
-                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon "></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarToggler">
-          <ul class="navbar-nav">
-           <!--if user_signed_in? %>-->
-            <li class="nav-item">
-              <%= link_to  root_path, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-house"></i>&nbsp;Home
-              <% end %>
-            </li>
-          <!--% else %>-->
-            <li class="nav-item">
-              <%= link_to  root_path, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-house"></i>&nbsp;Home
-              <% end %>
-            </li>
-            <!--% end %>-->
-          </ul>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" 
+                  aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+          </button>
           
+          <div class="collapse navbar-collapse justify-content-end" id="navbarToggler">
+            <ul class="navbar-nav">
+            <% if user_signed_in? %>
+            <!--ログイン後-->
+              <li class="nav-item ml-auto">
+                <%= link_to  user_path(current_user.id), class: 'nav-link text-light' do %>
+                  <i class="fa-solid fa-house"></i>&nbsp;Home
+                <% end %>
+              </li>
+              
+              <li class="nav-item">
+                <%= link_to  users_path, class: 'nav-link text-light' do %>
+                  <i class="fa-solid fa-users"></i>&nbsp;Users
+                <% end %>
+              </li>
+              
+              <li class="nav-item">
+                <%= link_to  books_path, class: 'nav-link text-light' do %>
+                  <i class="fa-solid fa-book-open"></i>&nbsp;Books
+                <% end %>
+              </li>
+              
+              <li class="nav-item">
+                <%= link_to  destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+                  <i class="fa-solid fa-right-from-bracket"></i>&nbsp;Log out
+                <% end %>
+              </li>
+              
+            <% else %>
+            <!--ログイン前-->
+              <li class="nav-item">
+                <%= link_to  root_path, class: 'nav-link text-light' do %>
+                  <i class="fa-solid fa-house"></i>&nbsp;Home
+                <% end %>
+              </li>
+              
+              <li class="nav-item">
+                <%= link_to  root_path, class: 'nav-link text-light' do %>
+                  <i class="fa-solid fa-link"></i>&nbsp;About
+                <% end %>
+              </li>
+              
+              <li class="nav-item">
+                <%= link_to  new_user_registration_path, class: 'nav-link text-light' do %>
+                  <i class="fa-solid fa-user-plus"></i>&nbsp;Sign up
+                <% end %>
+              </li>
+              
+              <li class="nav-item">
+                <%= link_to  new_user_session_path, class: 'nav-link text-light' do %>
+                  <i class="fa-solid fa-right-to-bracket"></i>&nbsp;Log in
+                <% end %>
+              </li>
+              
+            <% end %>
+            </ul>
+            
+          </div>
         </div>
       </nav>
-      
-      
     </header>
+    
     <%= yield %>
   </body>
+  <footer class="row justify-content-center">
+    <p>
+      </br>
+      </br>
+      CopyRight Infratop.inc</p>
+  </footer>
 </html>
