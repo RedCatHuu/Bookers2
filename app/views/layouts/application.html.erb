@@ -5,12 +5,44 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/17db0ec767.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="container-fluid">
+    <header class="text-light bg-dark mb-3">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        
+        <a class="navbar-brand" href="/">Bookers</a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" 
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon "></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarToggler">
+          <ul class="navbar-nav">
+           <!--if user_signed_in? %>-->
+            <li class="nav-item">
+              <%= link_to  root_path, class: 'nav-link text-light' do %>
+                <i class="fa-solid fa-house"></i>&nbsp;Home
+              <% end %>
+            </li>
+          <!--% else %>-->
+            <li class="nav-item">
+              <%= link_to  root_path, class: 'nav-link text-light' do %>
+                <i class="fa-solid fa-house"></i>&nbsp;Home
+              <% end %>
+            </li>
+            <!--% end %>-->
+          </ul>
+          
+        </div>
+      </nav>
+      
+      
+    </header>
     <%= yield %>
   </body>
 </html>
