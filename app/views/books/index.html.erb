@@ -1,14 +1,18 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-3 bg-primary" style="">
-        <h2>User info</h2>
-        <h2>New book</h2>
+      
+      <div class="col-md-3">
+        <%= render 'users/user', user: @user %>
+        <%= render 'book', book: @book %>
       </div>
+      
+      
       <div class="offset-md-1 col-md-8 bg-pink">
         <h2>Books</h2>
+        
         <table class="table table-hover">
-          
+        
           <thead>
             <tr>
               <th>image</th>
@@ -18,15 +22,18 @@
           </thead>
           
           <tbody>
+          <% @books.each do |b| %>
             <tr>
-              <td>画像が並ぶ</td>
-              <td>タイトルが並ぶ</td>
-              <td>本文が並ぶ</td>
+              <td><%= image_tag b.user.get_profile_image %></td>
+              <td><%= b.title %></td>
+              <td><%= b.body %></td>
             </tr>
+          <% end %>
           </tbody>
           
         </table>
       </div>
+      
     </div>
   </div>
 </body>
