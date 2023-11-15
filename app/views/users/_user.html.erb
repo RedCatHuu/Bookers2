@@ -11,8 +11,8 @@
 <br/>
 
 <div class="row">
-  <a href="users/edit" class="btn btn-outline-secondary col" role="buttone">
+  <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary col" do %>
     <i class="fa-solid fa-user-gear"></i>
-  </a>
+  <% end %>
 </div>
 <br/>
