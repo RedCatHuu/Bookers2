@@ -18,7 +18,7 @@
       </div>
       
       
-      <div class="offset-md-1 col-md-8 bg-pink">
+      <div class="offset-md-1 col-md-8">
         <h2>Books</h2>
         
         <table class="table table-hover">
@@ -34,7 +34,11 @@
           <tbody>
           <% @books.each do |b| %>
             <tr>
-              <td class=""><%= image_tag b.user.get_profile_image(100, 100) %></td>
+              <td>
+                <%= link_to user_path(b.user_id) do %>
+                  <%= image_tag b.user.get_profile_image(100, 100) %>
+                <% end %>
+              </td>
               <td>
                 <%= link_to(book_path(b.id)) do %>
                   <%= b.title %>
