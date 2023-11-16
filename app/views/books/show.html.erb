@@ -13,18 +13,24 @@
           <tr>
             <td>
               <%= image_tag @book_show.user.get_profile_image(100, 100) %>
+              <br/>
               <%= link_to user_path(@book_show.user.id) do %>
                 <%= @book_show.user.name %>
               <% end %>
             </td>
-            <td><%= @book_show.title %></td>
+            <td>
+              <%= link_to book_path(@book_show.id) do %>
+                <%= @book_show.title %></td>
+              <% end %>
             <td><%= @book_show.body %></td>
-            <td>
-              <%= link_to "Edit", book_path(@book_show.id), class:"btn btn-success btn-sm" %>
-            </td>
-            <td>
-              <%= link_to "Destroy", book_path(@book_show.id), method: :delete, class:"btn btn-danger btn-sm" %>
-            </td>
+            <% if @book_show.user == current_user %>
+              <td>
+                <%= link_to "Edit", edit_book_path(@book_show.id), class:"btn btn-success btn-sm" %>
+              </td>
+              <td>
+                <%= link_to "Destroy", book_path(@book_show.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger btn-sm" %>
+              </td>
+            <% end %>
           </tr>
         </tbody>
       </table>

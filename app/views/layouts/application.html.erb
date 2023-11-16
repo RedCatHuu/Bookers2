@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <header class="text-light bg-dark mb-3 no-gutters">
+    <header class="text-light bg-dark no-gutters">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
         
@@ -82,7 +82,12 @@
           </div>
         </div>
       </nav>
+      
     </header>
+      <div style="margin-bottom: 5px;">
+        <%= flash[:notice] %>
+      </div>
+      
     
     <%= yield %>
   </body>
