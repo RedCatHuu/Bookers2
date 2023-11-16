@@ -1,9 +1,36 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
-<div class="container-fluid">
-  <div class="row">
-    <%= render 'user', user: @user %>
-    <%= render 'books/book', book: @book %>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <%= render 'user', user: @user %>
+        <%= render 'books/book', book: @book %>
+      </div>
+      <div class="col-md-8">
+        <h2>Books</h2>
+        <table class="table tabel-hover">
+          <thead>
+            <tr>
+              <td></td>
+              <td><strong>Title</strong></td>
+              <td><strong>Opinion</strong></td>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <% @book_index.each do |bi| %>
+            <tr>
+              <td><%= image_tag bi.user.get_profile_image(100, 100) %></td>
+              <td>
+                <%= link_to book_path(bi.id) do %>
+                  <%= bi.title %>
+                <% end %>
+                </td>
+              <td><%= bi.body %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
+</body>
